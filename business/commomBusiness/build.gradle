@@ -1,0 +1,47 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 27
+
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 27
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions {
+            annotationProcessorOptions {
+                it.argument('moduleName', project.getName())
+                includeCompileClasspath = true
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+//    api project(path: ':activityrouter')
+//    annotationProcessor project(':activitycompiler')
+    api project(path: ':widgetsAndUtils')
+    api("android.arch.lifecycle:extensions:${arch_lifecycle_version}") {
+        exclude group: 'android.arch.lifecycle', module: 'livedata-core'
+        exclude group: 'android.arch.lifecycle', module: 'viewmodel'
+        exclude group: 'android.arch.lifecycle', module: 'runtime'
+        exclude group: 'android.arch.core', module: 'runtime'
+        exclude group: 'android.arch.core', module: 'common'
+    }
+}

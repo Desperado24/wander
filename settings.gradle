@@ -1,0 +1,14 @@
+include ':app', ':commomBusiness', ':widgetsAndUtils', ':im', ':login', ':routerCompiler', ':routerAnnotation', ':router', ':routerStub'
+/*
+* activityrouter 相关
+* */
+project(":routerCompiler").projectDir = new File("open-source-lib/routerCompiler")
+project(":routerAnnotation").projectDir = new File("open-source-lib/routerAnnotation")
+project(":router").projectDir = new File("open-source-lib/router")
+project(":routerStub").projectDir = new File("open-source-lib/routerStub")
+
+//开源的UI组件或者工具类库，与业务没有任何关系
+project(":widgetsAndUtils").projectDir = new File("open-source-lib/widgetsAndUtils")
+project(":commomBusiness").projectDir = new File("business/commomBusiness")
+project(":im").projectDir = new File("business/im")
+project(":login").projectDir = new File("business/login")
